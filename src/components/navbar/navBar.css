@@ -1,0 +1,32 @@
+/* INICIO NAVBAR */
+.App-navbar{
+    background-color: yellow;
+}
+  
+.App-navbar nav ul{
+    display: flex;
+    justify-content: end;
+    list-style: none;
+    padding: 10px 0;
+}
+  
+.App-navbar nav ul li{
+    margin-right: 50px;
+}
+  
+.App-navbar nav ul li:first-child{
+    margin-right: auto;
+    margin-left: 50px;
+}
+  
+.App-navbar nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.App-navbar nav ul li:hover{
+   background-color: grey;
+   
+}
+
+/* FIN NAVBAR */
