@@ -1,17 +1,18 @@
 /* INICIO NAVBAR */
 .App-navbar{
-    background-color: yellow;
+    background-color: lightblue;
 }
   
 .App-navbar nav ul{
     display: flex;
     justify-content: end;
     list-style: none;
-    padding: 10px 0;
+    padding: 20px 0;
 }
   
 .App-navbar nav ul li{
     margin-right: 50px;
+    
 }
   
 .App-navbar nav ul li:first-child{
@@ -24,9 +25,12 @@
     color: black;
 }
 
-.App-navbar nav ul li:hover{
+.App-navbar nav ul li a:hover{
    background-color: grey;
    
 }
 
+img{
+    width: 60px;
+}
 /* FIN NAVBAR */
