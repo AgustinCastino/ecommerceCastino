@@ -1,0 +1,25 @@
+.card {
+    border: 2px solid lightsteelblue;
+    border-radius: 10px;
+    border-style: outset;
+    width: 200px;
+    height: 250px;
+    text-align: center;
+}
+
+.imagen {
+    background-color: lightblue;
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+}
+
+.controladores button{
+    height: 20px;
+    width: 20px;
+}
+
+.agregarCarrito{
+    padding: 5px;
+    margin: 20px;
+}
