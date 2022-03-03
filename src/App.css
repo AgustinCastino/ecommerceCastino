@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-.App {
-  text-align: center;
-}
-
 .cards{
   display: flex;
   margin: 15px 0;

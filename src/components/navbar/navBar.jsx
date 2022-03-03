@@ -4,14 +4,14 @@ import './navBar.css'
 
 function NavBar(){
     return(
-      <div className="App-navbar">
-            <nav>
-                <ul>
-                    <li>Logo Ecommerce</li>
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="/">Nosotros</a></li>
-                    <li><a href="/">Carrito</a></li>
-                    <li><a href="/"><CartWidget /></a></li>
+      <div className="appNavbar">
+            <nav className='navContenedor'>
+                <a className='logo'>Logo</a>
+                <ul className='navMenu'>
+                    <li className='navItem'><a href="/" className='navLink'>Inicio</a></li>
+                    <li className='navItem' ><a href="/" className='navLink'>Nosotros</a></li>
+                    <li className='navItem'><a href="/" className='navLink'>Carrito</a></li>
+                    <li className='navItem'><a href="/"><CartWidget /></a></li>
                 </ul>
             </nav>
       </div>  
