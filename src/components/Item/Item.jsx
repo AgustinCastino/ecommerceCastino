@@ -1,38 +1,21 @@
-import { useState } from 'react';
+import ItemCount from '../ItemCount/ItemCount';
 import './Item.css'
 
-export default function Item({producto, stock}) {
-    const [count, setCount] = useState(1);
-    console.log(producto)
-
-    function sumarCantidad() {
-        if (count < stock) {
-            setCount(count + 1);
-
-        }
-    }
-
-    function restarCantidad() {
-        if (count > 1) {
-            setCount(count - 1);
-        }
-    }
-
-    function agregarCarrito() {
-        console.log(`Usteded agregó ${count} pares de ${producto}`)
-        setCount(1)
+ 
+function Item({producto, stock}) {
+    
+    function onAdd(cantidad){
+        console.log(cantidad)
     }
 
     return (
         <div className="card">
-             <h2>{producto} </h2>
-            <div className="imagen">Acá va una imagen del producto</div>
-            <div className="controladores">
-                <button onClick={restarCantidad}> - </button>
-                <label> {count} </label>
-                <button onClick={sumarCantidad}> + </button>
-            </div>
-            <button onClick={agregarCarrito} className='agregarCarrito'> Agregar al carrito</button>
+            <h2>{producto} </h2>
+            <div className="imagen">Acá va una imagen del producto</div>    
+            <ItemCount  initial={1} stock={stock} producto={producto} onAdd={onAdd}/>
+            
         </div>
     );
 }
+
+export default Item
