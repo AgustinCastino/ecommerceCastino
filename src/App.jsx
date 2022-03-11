@@ -1,17 +1,31 @@
 import './App.css';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import NavBar from './components/navbar/navBar.jsx';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
 
-      <NavBar />
-      <ItemListContainer saludo="Bienvenidos al Ecommerce"/>
-
-      
-      
+    <div>
+        <NavBar />
+        <ItemListContainer saludo="Bienvenidos al Ecommerce"/>
+        <ItemDetailContainer/>
     </div>
+    // <BrowserRouter>
+    // <div className="App">
+    //   <NavBar />
+
+    //   <Routes>
+    //     <Route path = '/' element={<ItemListContainer saludo="Bienvenidos al Ecommerce"/>}/>
+    //     <Route path = '/detalle'element={<ItemDetailContainer/>}/>
+    //     <Route path = '/*'element={<Navigate to='/' replace/>}/>
+
+    //   </Routes> 
+
+    // </div>
+    // </BrowserRouter>
   );
 }
 

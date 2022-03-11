@@ -1,17 +1,5 @@
-.card {
-    border: 2px solid lightsteelblue;
-    border-radius: 10px;
-    border-style: outset;
-    width: 200px;
-    height: 250px;
-    text-align: center;
-}
-
-.imagen {
-    background-color: lightblue;
-    width: 100px;
-    height: 100px;
-    margin: 10px auto;
+.zapatillaFoto {
+    width:200px
 }
 
 .controladores button{

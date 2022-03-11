@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getFetch } from '../../helpers/getFetch';
 import Item from '../Item/Item';
+import './ItemList.css'
 
 function ItemList() {
   const [productos, setProductos] = useState([])
@@ -13,8 +14,9 @@ function ItemList() {
 
 
   return(
-    <div>
-      {productos.map((prod)=><Item key={prod.id} producto={prod.producto} stock={prod.stock}/>)}
+    <div className='ItemList'>
+      {productos.map((prod)=><Item key={prod.id} producto={prod.producto} stock={prod.stock} 
+      img={prod.img}/>)}
     </div>
   )
 }

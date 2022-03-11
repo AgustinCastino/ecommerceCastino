@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 function ItemCount({stock, onAdd}){
-
     const [count, setCount] = useState(1);
 
     function sumarCantidad() {
@@ -20,6 +19,7 @@ function ItemCount({stock, onAdd}){
     function agregarCarrito() {
         onAdd(count)
         setCount(1)
+
     }
 
     return(
