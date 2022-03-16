@@ -1,13 +1,10 @@
 import { Card, Button } from 'react-bootstrap';
-import ItemCount from '../ItemCount/ItemCount';
+import { Link } from 'react-router-dom'
 import './Item.css'
 
 
-function Item({ producto, stock,img }) {
+function Item({ producto, stock, img, id }) {
 
-    function onAdd(cantidad) {
-        console.log(cantidad)
-    }
 
     return (
 
@@ -18,8 +15,10 @@ function Item({ producto, stock,img }) {
                 <Card.Text>
                     Stock: {stock}
                 </Card.Text>
-                <Button variant="primary"> Más detalles </Button>
-                <ItemCount  initial={1} stock={stock} producto={producto} onAdd={onAdd}/>
+                <Link to={`detalle/${id}`}>
+                    <Button variant="primary"> Más detalles </Button>
+                </Link>
+                
             </Card.Body>
         </Card>
     );

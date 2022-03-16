@@ -1,4 +1,10 @@
+import ItemCount from "../ItemCount/ItemCount"
+
 function ItemDetail ({producto, stock, precio}){
+    function onAdd(cantidad) {
+        console.log(cantidad)
+    }
+
     return(
         <div>
             <div>
@@ -6,6 +12,7 @@ function ItemDetail ({producto, stock, precio}){
                 <h1>{producto}</h1>
                 <p>Precio: {precio}</p>
                 <p>Stock: {stock}</p>
+                <ItemCount  initial={1} stock={stock} producto={producto} onAdd={onAdd}/>
             </div>
         </div>
     )

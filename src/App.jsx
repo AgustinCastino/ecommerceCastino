@@ -8,24 +8,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
 
-    <div>
+    <BrowserRouter>
+      <div className="App">
         <NavBar />
-        <ItemListContainer saludo="Bienvenidos al Ecommerce"/>
-        <ItemDetailContainer/>
-    </div>
-    // <BrowserRouter>
-    // <div className="App">
-    //   <NavBar />
 
-    //   <Routes>
-    //     <Route path = '/' element={<ItemListContainer saludo="Bienvenidos al Ecommerce"/>}/>
-    //     <Route path = '/detalle'element={<ItemDetailContainer/>}/>
-    //     <Route path = '/*'element={<Navigate to='/' replace/>}/>
+        <Routes>
+          <Route path = '/' element={<ItemListContainer saludo="Bienvenidos al Ecommerce"/>}/>
+          <Route path = '/categoria/:categoriaId' element={<ItemListContainer/>}/>
+          <Route path = '/detalle/:Id'element={<ItemDetailContainer/>}/>
+          <Route path = '/*'element={<Navigate to='/' replace/>}/>
 
-    //   </Routes> 
+        </Routes> 
 
-    // </div>
-    // </BrowserRouter>
+      </div>
+    </BrowserRouter>
   );
 }
 
