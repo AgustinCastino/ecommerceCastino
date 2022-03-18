@@ -21,7 +21,7 @@ function NavBar() {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <NavLink to='detalle'>
+                        <NavLink to='/cart'>
                             <CartWidget />
                         </NavLink>
                     </Nav>
