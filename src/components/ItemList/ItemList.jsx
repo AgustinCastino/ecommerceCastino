@@ -4,6 +4,7 @@ import { getFetch } from '../../helpers/getFetch';
 import Item from '../Item/Item';
 import Loading from '../Loading/Loading';
 import './ItemList.css'
+// import {doc, getDoc, getFirestore} from "firebase/firestore"
 
 function ItemList() {
   const [productos, setProductos] = useState([])
@@ -30,6 +31,14 @@ function ItemList() {
       .finally(()=> setLoading(false))
     }
   },[categoriaId])
+
+  // useEffect(()=>{
+  //   const db = getFirestore()
+  //   const queryDb = doc(db, 'productos','ujPQtsbvX7y3FffTSo44')
+  //   getDoc(queryDb)
+  //   .then((resp)=> console.log(resp))
+  //   console.log(queryDb)
+  // },[])
 
   return(
     

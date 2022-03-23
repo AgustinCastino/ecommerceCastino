@@ -5,25 +5,30 @@ import NavBar from './components/navbar/navBar.jsx';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cart from './components/Cart/Cart';
+import CartContextProvider from '../src/context/CartContext'
 
 function App() {
+
   return (
+    <CartContextProvider>
 
-    <BrowserRouter>
-      <div className="App">
-        <NavBar />
+      <BrowserRouter>
 
-        <Routes>
-          <Route path = '/' element={<ItemListContainer saludo="Bienvenidos al Ecommerce"/>}/>
-          <Route path = '/categoria/:categoriaId' element={<ItemListContainer/>}/>
-          <Route path = '/detalle/:Id'element={<ItemDetailContainer/>}/>
-          <Route path = '/cart'element={<Cart/>}/>
-          <Route path = '/*'element={<Navigate to='/' replace/>}/>
+        <div className="App">
+          <NavBar />
+          <Routes>
+            <Route path = '/' element={<ItemListContainer saludo="Bienvenidos al Ecommerce"/>}/>
+            <Route path = '/categoria/:categoriaId' element={<ItemListContainer/>}/>
+            <Route path = '/detalle/:Id'element={<ItemDetailContainer/>}/>
+            <Route path = '/cart'element={<Cart />}/>
+            <Route path = '/*'element={<Navigate to='/' replace/>}/>
+          </Routes> 
+        </div>
 
-        </Routes> 
+      </BrowserRouter>
+    </CartContextProvider>
 
-      </div>
-    </BrowserRouter>
+
   );
 }
 
