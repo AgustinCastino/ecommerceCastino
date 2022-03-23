@@ -8,16 +8,17 @@ function CartContextProvider({children}){
     const [cartList, SetCartList] = useState([])
 
 
-    const agregarCart = (item, cantidad) =>{
+    const agregarCart = (productos, cantidad) =>{
+
         let itemRepedito
-        
-        if(itemRepedito = cartList.find(resp => resp.productos.id === item.id)){
-            console.log('ya hay uno igual')
-            itemRepedito.cantidad += item.cantidad
-            console.log(cartList[0].cantidad || 'primero')
+        if(itemRepedito = cartList.find(resp => resp.id === productos.id)){
+
+            itemRepedito.cantidad += cantidad
 
         }else{
-            SetCartList([ ...cartList, item ])
+            productos.cantidad= cantidad
+            SetCartList([ ...cartList, productos])
+
         }            
     }    
 
