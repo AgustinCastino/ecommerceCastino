@@ -28,9 +28,9 @@ function CartContextProvider({children}){
         SetProductosTotales(0)
     }
 
-    const eliminarItem = (id)=>{
-        console.log(id)
-        // SetCartList([cartList.filter(resp =>resp.id != id)])
+    const eliminarItem = (id,cantidad)=>{
+        SetCartList(cartList.filter(resp =>resp.id != id))
+        SetProductosTotales(productosTotales - cantidad)
     }
 
     return(

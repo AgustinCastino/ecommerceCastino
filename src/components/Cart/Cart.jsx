@@ -14,11 +14,8 @@ function Cart() {
             {cartList.map(item => <div key={item.id}>
                 <li style={{ display: 'inline', padding: '10px' }}>{item.producto} {item.cantidad}</li>
 
-                <button onClick={()=>eliminarItem(item.id)}>Eliminar {item.id}</button>
+                <button onClick={()=>eliminarItem(item.id, item.cantidad)}>Eliminar {item.id}</button>
 
-                {/* <button onClick={(eliminarItem)=>{
-                    cartList.filter(resp => SetCartList(resp.id != item.id))
-                }}>Eliminar {item.id}</button> */}
             </div>)}
 
             {cartList.length > 0 ? <button onClick={vaciarCart}>
