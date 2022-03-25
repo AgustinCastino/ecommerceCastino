@@ -23,12 +23,13 @@ const AgregarCarrito = ()=>{
 
 function ItemDetail ({productos}){
     const [button,Setbutton] = useState(false)
-    const {agregarCart,cartList} = useCartContext()
-
+    const {agregarCart} = useCartContext()
+    
     function onAdd(cantidad) {
         Setbutton(true)
         agregarCart(productos,cantidad)
     }
+
 
     return(
         <div>
