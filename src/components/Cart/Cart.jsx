@@ -2,12 +2,7 @@ import { Link } from "react-router-dom"
 import { useCartContext } from "../../context/CartContext"
 
 function Cart() {
-    const { eliminarItem, cartList, vaciarCart } = useCartContext()
-    console.log(cartList)
-
-    // const eliminarItem = (e)=>{
-    //     console.log(e.id)
-    // }
+    const { calcularPrecioTotal, eliminarItem, cartList, vaciarCart } = useCartContext()
     
     return (
         <div>
@@ -18,9 +13,13 @@ function Cart() {
 
             </div>)}
 
-            {cartList.length > 0 ? <button onClick={vaciarCart}>
-                Vaciar Carrito
-            </button>
+            {cartList.length > 0 ? <>
+                Precio Total: ${calcularPrecioTotal()}
+                <button style={{display:'block'}} onClick={vaciarCart}>
+                    Vaciar Carrito
+                </button>
+            </>
+            
                 :
                 <>
                     <h1>Carrito Vacio</h1>

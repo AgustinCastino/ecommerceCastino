@@ -8,7 +8,7 @@ const AgregarCarrito = ()=>{
     return(
         <>
         <Link to='/cart'>
-            <button onClick={()=>console.log('ir a carrito')}>
+            <button>
                 Terminar compra
             </button>
         </Link>
@@ -23,7 +23,7 @@ const AgregarCarrito = ()=>{
 
 function ItemDetail ({productos}){
     const [button,Setbutton] = useState(false)
-    const {agregarCart} = useCartContext()
+    const {agregarCart, calcularPrecioTotal} = useCartContext()
     
     function onAdd(cantidad) {
         Setbutton(true)

@@ -21,6 +21,7 @@ function CartContextProvider({children}){
 
         }   
         SetProductosTotales(productosTotales + cantidad)
+        console.log(cartList)
         
     }    
     const vaciarCart = ()=>{
@@ -32,6 +33,21 @@ function CartContextProvider({children}){
         SetCartList(cartList.filter(resp =>resp.id != id))
         SetProductosTotales(productosTotales - cantidad)
     }
+    
+
+    const calcularPrecioTotal = ()=>{
+        console.log(cartList)
+        let precioTotal = 0
+
+        for(let i = 0; i < cartList.length;i++){
+            precioTotal = precioTotal + cartList[i].precio * cartList[i].cantidad
+        }
+        return precioTotal
+
+    
+    }
+
+    
 
     return(
         <CartContext.Provider value={{
@@ -39,7 +55,8 @@ function CartContextProvider({children}){
             productosTotales,
             agregarCart,
             vaciarCart,
-            eliminarItem
+            eliminarItem,
+            calcularPrecioTotal
         }}>
             {children}
         </CartContext.Provider>
