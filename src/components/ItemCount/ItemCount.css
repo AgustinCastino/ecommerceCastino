@@ -1,0 +1,21 @@
+.btnRestar, .btnSumar{
+    border-radius: 5px;
+    width: 30px;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+.agregarCarrito{
+    border-radius: 5px;
+    width: 75%;
+    background-color: blue;
+    color: white;
+    margin-top: 10px;
+
+}
+
+.controladores{
+    text-align: center;
+    padding: 30px;
+}

@@ -1,0 +1,16 @@
+.contenedorDetalle{
+    display: flex;
+    justify-content: space-evenly;
+    border: solid black 3px;
+    border-radius: 5px;
+    margin: 30px 10%;
+}
+
+.fotoDetalle img{
+    width: 75%
+}
+
+.descripcionDetalle{
+    align-items: center;
+}
+

@@ -15,6 +15,14 @@ function ItemDetailContainer (){
     })
     },[])
 
+    // useEffect(()=>{
+    //     const db = getFirestore()
+    //     const queryDb = doc(db, 'productos', Id)
+    //     getDoc(queryDb)
+    //     .then((resp)=> setProductosFS( { id:resp.id, ...resp.data() } ))
+    //     // console.log(queryDb)
+    // },[])
+
     return(
         // <ItemDetail producto = {productos.producto} 
         // stock = {productos.stock} precio = {productos.precio}/>

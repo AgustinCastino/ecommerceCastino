@@ -1,0 +1,29 @@
+.contenedorCarrito{
+    margin: 100px 0;
+    display: inline;
+    justify-content: space-evenly;
+}
+
+.contenedorCompra{
+    padding: 0;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    border: grey solid 3px;
+    border-radius: 5px;
+}
+
+.infoCompra{
+    display: block;
+}
+.imgCompra img{
+    width: 30%;
+    margin: 0;
+}
+
+.elimiarItem{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
