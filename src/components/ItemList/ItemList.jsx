@@ -4,7 +4,7 @@ import { getFetch } from '../../helpers/getFetch';
 import Item from '../Item/Item';
 import Loading from '../Loading/Loading';
 import './ItemList.css'
-import {collection, doc, getDoc, getDocs, getFirestore} from "firebase/firestore"
+import { query, where, collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore"
 
 function ItemList() {
   const [productos, setProductos] = useState([])
@@ -18,12 +18,12 @@ function ItemList() {
   //   if (categoriaId) {
   //     getFetch
   //       .then((respuesta)=>{
-        
+
   //       return(respuesta)
   //     })
   //     .then((resp)=> setProductos(resp.filter(producto=>producto.marca=== categoriaId)))
   //     .finally(()=> setLoading(false))
-      
+
   //   }else{
   //     getFetch
   //       .then((respuesta)=>{
@@ -34,13 +34,30 @@ function ItemList() {
   // },[categoriaId])
 
   //PARA UNA COLECCION (TODOS LOS ID)
-   useEffect(()=>{
-    const db = getFirestore()
-    const queryColection = collection(db, "productos")
-    getDocs(queryColection)
-    .then((resp)=> setProductos(resp.docs.map(item => ({ id:item.id, ...item.data() } ) )))
-    .finally(()=> setLoading(false))
-  },[])
+  useEffect(() => {
+    if (categoriaId) {
+      const db = getFirestore()
+      const queryColection = collection(db, "productos")
+      const queryFilter = query(queryColection, where('marca', '==', categoriaId))
+      getDocs(queryFilter)
+        .then((resp) => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
+        .finally(() => setLoading(false))
+
+      // getFetch
+      //   .then((respuesta) => {
+      //     return (respuesta)
+      //   })
+      //   .then((resp) => setProductos(resp.filter(producto => producto.marca === categoriaId)))
+      //   .finally(() => setLoading(false))
+    } else {
+      const db = getFirestore()
+      const queryColection = collection(db, "productos")
+      getDocs(queryColection)
+        .then((resp) => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
+        .finally(() => setLoading(false))
+    }
+
+  }, [categoriaId])
 
   // PARA UN UNICO ITEM
   // useEffect(()=>{
@@ -53,14 +70,14 @@ function ItemList() {
 
   console.log(productos)
 
-  return(
-    
+  return (
+
     <div className='ItemList'>
-      
-      { loading ? <Loading />
-      : 
-      productos.map((prod)=><Item key={prod.id} producto={prod.producto} stock={prod.stock} 
-      img={prod.img} id={prod.id}/>)}
+
+      {loading ? <Loading />
+        :
+        productos.map((prod) => <Item key={prod.id} producto={prod.producto} stock={prod.stock}
+          img={prod.img} id={prod.id} />)}
 
     </div>
   )
