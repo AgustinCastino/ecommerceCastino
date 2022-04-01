@@ -21,7 +21,6 @@ function CartContextProvider({children}){
 
         }   
         SetProductosTotales(productosTotales + cantidad)
-        console.log(cartList)
         
     }    
     const vaciarCart = ()=>{
@@ -36,7 +35,6 @@ function CartContextProvider({children}){
     
 
     const calcularPrecioTotal = ()=>{
-        console.log(cartList)
         let precioTotal = 0
 
         for(let i = 0; i < cartList.length;i++){

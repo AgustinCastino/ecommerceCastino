@@ -9,14 +9,6 @@ function ItemDetailContainer (){
     const [productos, setProductos] = useState([])
     const {Id} = useParams()
 
-    // PARA EL MOCK
-    // useEffect(()=>{
-    //     getFetch
-    //     .then((respuesta)=>{
-    //     setProductos(respuesta.find(elemento => elemento.id === Id)) 
-    // })
-    // },[])
-
     useEffect(()=>{
         const db = getFirestore()
         const queryDb = doc(db, 'productos', Id)

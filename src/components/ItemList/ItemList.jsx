@@ -8,67 +8,33 @@ import { query, where, collection, doc, getDoc, getDocs, getFirestore } from "fi
 
 function ItemList() {
   const [productos, setProductos] = useState([])
-  const [productosFS, setProductosFS] = useState({})
   const [loading, setLoading] = useState(true)
   const { categoriaId } = useParams()
 
-  // CON EL MOCK
-  // useEffect(()=>{ 
-
-  //   if (categoriaId) {
-  //     getFetch
-  //       .then((respuesta)=>{
-
-  //       return(respuesta)
-  //     })
-  //     .then((resp)=> setProductos(resp.filter(producto=>producto.marca=== categoriaId)))
-  //     .finally(()=> setLoading(false))
-
-  //   }else{
-  //     getFetch
-  //       .then((respuesta)=>{
-  //         setProductos(respuesta) 
-  //     })
-  //     .finally(()=> setLoading(false))
-  //   }
-  // },[categoriaId])
 
   //PARA UNA COLECCION (TODOS LOS ID)
   useEffect(() => {
     if (categoriaId) {
+      
       const db = getFirestore()
       const queryColection = collection(db, "productos")
       const queryFilter = query(queryColection, where('marca', '==', categoriaId))
       getDocs(queryFilter)
-        .then((resp) => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
-        .finally(() => setLoading(false))
+      .then((resp) => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
+      .finally(() => setLoading(false))
 
-      // getFetch
-      //   .then((respuesta) => {
-      //     return (respuesta)
-      //   })
-      //   .then((resp) => setProductos(resp.filter(producto => producto.marca === categoriaId)))
-      //   .finally(() => setLoading(false))
-    } else {
+      } else {
+
       const db = getFirestore()
-      const queryColection = collection(db, "productos")
-      getDocs(queryColection)
-        .then((resp) => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
-        .finally(() => setLoading(false))
+      const queryCollection = collection(db, "productos")
+      getDocs(queryCollection)
+      .then((resp) => setProductos(resp.docs.map(item => ({ id: item.id, ...item.data() }))))
+      .finally(() => setLoading(false))
+
     }
 
   }, [categoriaId])
 
-  // PARA UN UNICO ITEM
-  // useEffect(()=>{
-  //   const db = getFirestore()
-  //   const queryDb = doc(db, 'productos','ujPQtsbvX7y3FffTSo44')
-  //   getDoc(queryDb)
-  //   .then((resp)=> setProductosFS( { id:resp.id, ...resp.data() } ))
-  //   // console.log(queryDb)
-  // },[])
-
-  console.log(productos)
 
   return (
 
