@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { useCartContext } from "../../context/CartContext"
 import './Cart.css'
 import tacho from '../../images/tacho.jpeg'
+import FormularioCompra from "../FormularioCompra/FormularioCompra"
 
 function Cart() {
     const { calcularPrecioTotal, eliminarItem, cartList, vaciarCart } = useCartContext()
@@ -20,9 +21,7 @@ function Cart() {
 
             return { id: id, nombre: nombre, precio: precio }
         })
-
-        console.log(orden)
-
+        
         const db = getFirestore()
         const queryCollection = collection(db, 'ordenes')
         addDoc(queryCollection, orden)
@@ -68,10 +67,8 @@ function Cart() {
 
                     </div>
 
-                    <div>
-                        <label>dfdsfsdf</label>
-                        <label>dsfdsfds</label>
-                        <label>dsfdsfdsfdsf</label>
+                    <div style={{width:'30%', marginTop:'15px'}}>
+                        <FormularioCompra/>
                     </div>
 
                 </div>
