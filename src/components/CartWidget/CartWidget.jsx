@@ -9,9 +9,9 @@ function CartWidget(){
 
     return(
         <div>
-            <img src={carrito} alt="" />
-            <label style={{display: productosTotales > 0 ? 
-                'inline' 
+            <img className='imgCarrito'src={carrito} alt="" />
+            <label className='contadorCarrito' style={{display: productosTotales > 0 ? 
+                'inline-block' 
                 : 
                 'none'}}
                 > {productosTotales} </label>

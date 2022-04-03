@@ -1,29 +1,38 @@
 .contenedorCarrito{
-    margin: 100px 0;
-    display: inline;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.contenedorCompra{
-    padding: 0;
-    width: 80%;
+.contenedorItemComprado{
     display: flex;
-    justify-content: space-evenly;
-    border: grey solid 3px;
-    border-radius: 5px;
-}
-
-.infoCompra{
-    display: block;
-}
-.imgCompra img{
-    width: 30%;
-    margin: 0;
-}
-
-.elimiarItem{
-    display: flex;
-    text-align: center;
     align-items: center;
+    border-bottom: 3px solid grey;
+}
+
+.contenedorItemComprado div{
+    margin: 0 30px;
+}
+
+.imgCompra img{
+    width: 150px;
+}
+
+.eliminarItem button{
+    border: none;
+}
+.eliminarItem img{
+    border: none;
+    width: 50px;
+}
+
+.carritoVacio{
+    text-align: center;
+}
+
+.carritoVacio button{
+    border-radius: 5px;
+    background-color: rgb(19, 120, 187);
+    color: white;
 }
 

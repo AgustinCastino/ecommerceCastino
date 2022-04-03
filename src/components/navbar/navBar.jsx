@@ -2,23 +2,22 @@ import React from 'react'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import CartWidget from '../CartWidget/CartWidget'
+import logo from '../../images/logo.png'
 import './navBar.css'
 
 function NavBar() {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Container>
-                <NavLink to="/">Logo</NavLink>
+            <Container className='navContainer'>
+                <NavLink className='navLink' to="/">
+                    <img className='logoImg'src={logo} alt="Logo" />
+                </NavLink>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <NavLink to="/categoria/Adidas">Adidas</NavLink>
-                        <NavLink to="/categoria/Nike">Nike</NavLink>
-                        <NavLink to="/categoria/Vans">Vans</NavLink>
-                        <NavDropdown title="Proximamente" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Remeras</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Buzos</NavDropdown.Item>
-                        </NavDropdown>
+                        <NavLink className='navLink' to="/categoria/Adidas">Adidas</NavLink>
+                        <NavLink className='navLink' to="/categoria/Nike">Nike</NavLink>
+                        <NavLink className='navLink' to="/categoria/Vans">Vans</NavLink>
                     </Nav>
                     <Nav>
                         <NavLink to='/cart'>

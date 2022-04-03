@@ -1,8 +1,8 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { Link } from "react-router-dom"
 import { useCartContext } from "../../context/CartContext"
-import ConfirmarCompra from "../ConfirmarCompra/ConfirmarCompra"
 import './Cart.css'
+import tacho from '../../images/tacho.jpeg'
 
 function Cart() {
     const { calcularPrecioTotal, eliminarItem, cartList, vaciarCart } = useCartContext()
@@ -10,15 +10,15 @@ function Cart() {
     const terminarCompra = () => {
         let orden = {}
 
-        orden.buyer = {name:'agus', phone: '11111', email:'ahhah@gmail.com'}
+        orden.buyer = { name: 'agus', phone: '11111', email: 'ahhah@gmail.com' }
         orden.total = calcularPrecioTotal()
 
-        orden.items = cartList.map(itemOrden =>{
+        orden.items = cartList.map(itemOrden => {
             const id = itemOrden.id
             const nombre = itemOrden.producto
             const precio = itemOrden.precio * itemOrden.cantidad
 
-            return {id:id, nombre:nombre, precio:precio}
+            return { id: id, nombre: nombre, precio: precio }
         })
 
         console.log(orden)
@@ -26,58 +26,73 @@ function Cart() {
         const db = getFirestore()
         const queryCollection = collection(db, 'ordenes')
         addDoc(queryCollection, orden)
-        .then(resp => console.log(`Compra realizada con Exito. Nro de orden: ${resp.id}`))
-        .catch(err => console.log(err))
-        .finally(()=> console.log('terminado'))
+            .then(resp => console.log(`Compra realizada con Exito. Nro de orden: ${resp.id}`))
+            .catch(err => console.log(err))
+            .finally(() => console.log('terminado'))
 
     }
-    
+
     return (
-        <div className="contenedorCarrito">
-            {cartList.map(item => <div className="contenedorCompra" key={item.id}>
+        <>
+            {cartList.length > 0 ?
 
-                <div className="imgCompra">
-                    <img src={item.img} alt={item.producto} />
-                </div>
-                <div>
-                    <li style={{ display: 'inline', padding: '10px' }}>
-                        <b className="infoCompra">{item.producto}</b>
-                        <b className="infoCompra">Precio por Unidad: ${item.precio}</b>
-                        <b className="infoCompra"> Unidades a comprar: {item.cantidad}</b>
-                    </li>
-                </div>
-                <div className="eliminarItem">
-                    <button onClick={()=>eliminarItem(item.id, item.cantidad)}>Eliminar del carrito</button>
-                </div>                
+                <div className="contenedorCarrito">
+                    <div>
+                        {cartList.map(item => <div className="contenedorItemComprado" key={item.id}>
 
-            </div>)}
+                            <div className="imgCompra">
+                                <img src={item.img} alt={item.producto} />
+                            </div>
+                            <div className="infoCompra">
+                                <li style={{ display: 'inline', padding: '10px' }}>
+                                    <p className="infoCompra">{item.producto}</p>
+                                    <p className="infoCompra">Precio por Unidad: ${item.precio}</p>
+                                    <p className="infoCompra"> Unidades a comprar: {item.cantidad}</p>
+                                </li>
+                            </div>
+                            <div className="eliminarItem">
+                                <button onClick={() => eliminarItem(item.id, item.cantidad)}><img src={tacho}></img></button>
+                            </div>
 
-            <div>
+                        </div>)}
 
-                {cartList.length > 0 ? <>
-                    Precio Total: ${calcularPrecioTotal()}
-                    <button style={{display:'block'}} onClick={vaciarCart}>
-                        Vaciar Carrito
-                    </button>
-                    <button onClick={terminarCompra}>
-                        Terminar compra
-                    </button>
-                    </>
-                    :
-                    <>
-                        <h1>Carrito Vacio</h1>
-                        <Link to='/'>
-                            <button>
-                                Ir a Comprar
+                        <div>
+                            Precio Total: ${calcularPrecioTotal()}
+                            <button style={{ display: 'block' }} onClick={vaciarCart}>
+                                Vaciar Carrito
                             </button>
-                        </Link>
-                    </>
-                }
-            </div>
+                            <button onClick={terminarCompra}>
+                                Terminar compra
+                            </button>
+                        </div>
 
+                    </div>
 
-        </div>
+                    <div>
+                        <label>dfdsfsdf</label>
+                        <label>dsfdsfds</label>
+                        <label>dsfdsfdsfdsf</label>
+                    </div>
+
+                </div>
+
+                :
+
+                <div className='carritoVacio'>
+                    <h1>Carrito Vacío</h1>
+                    <Link to='/'>
+                        <button>
+                            Ir a Comprar
+                        </button>
+                    </Link>
+                </div>
+
+            }
+
+        </>
+
     )
+
 }
 
 export default Cart

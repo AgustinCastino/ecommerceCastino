@@ -1,4 +1,12 @@
-label{
-    color: red;
-    
+.contadorCarrito{
+    color: white;
+    width: 20px;
+    text-align: center;
+
+}
+
+
+.imgCarrito{
+    margin-top: 10px;
+    width: 30px;
 }

@@ -7,10 +7,22 @@
 }
 
 .fotoDetalle img{
-    width: 75%
+    width: 50%
 }
 
 .descripcionDetalle{
     align-items: center;
+}
+
+.controladoresCompra{
+    display: flex;
+    margin: 20px;
+}
+
+.controladoresCompra button{
+    margin: 0 10px;
+    border-radius: 5px;
+    background-color: rgb(19, 120, 187);
+    color: white;
 }
 

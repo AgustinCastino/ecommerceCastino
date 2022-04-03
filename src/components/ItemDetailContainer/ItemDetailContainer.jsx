@@ -17,8 +17,6 @@ function ItemDetailContainer (){
     },[])
 
     return(
-        // <ItemDetail producto = {productos.producto} 
-        // stock = {productos.stock} precio = {productos.precio}/>
 
         <ItemDetail productos={productos}/>
     )

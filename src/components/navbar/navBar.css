@@ -1,44 +1,9 @@
-.appNavbar{
-    background-color: lightblue;
-    height: 50px;
-}
-
-.navContenedor{
-    display: flex;
-    justify-content: space-between;
-}
-
-.logo{
-    line-height: 50px;
-    margin: 0 30px;
-}
-
-.navMenu{
-    display: flex;
-    margin-right: 20px;
-    list-style: none;
-}
-
-.navItem{
-    margin: 0 10px;
-    line-height: 50px;
+.logoImg{
+    width: 50px;
 }
 
 .navLink{
-   text-decoration: none;
-   color: black;
-   padding: 5px;
-   border-radius: 3px;
-}
-
-  
-
-.navItem a:hover{
-   background-color: grey;
-   transition: 0.5s;
-}
-
-img{
-    margin-top: 10px;
-    width: 60px;
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
 }

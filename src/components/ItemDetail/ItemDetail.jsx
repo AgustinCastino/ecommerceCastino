@@ -6,8 +6,8 @@ import './ItemDetail.css'
 
 const AgregarCarrito = () => {
 
-    return (
-        <>
+    return(
+        <div className='controladoresCompra' >
             <Link to='/cart'>
                 <button>
                     Terminar compra
@@ -18,13 +18,13 @@ const AgregarCarrito = () => {
                     Seguir comprando
                 </button>
             </Link>
-        </>
+        </div>
     )
 }
 
 function ItemDetail({ productos }) {
     const [button, Setbutton] = useState(false)
-    const { agregarCart, calcularPrecioTotal } = useCartContext()
+    const { agregarCart } = useCartContext()
 
     function onAdd(cantidad) {
         Setbutton(true)
@@ -47,8 +47,9 @@ function ItemDetail({ productos }) {
                     button === false ?
                     <ItemCount initial={1} stock={productos.stock} producto={productos.producto} onAdd={onAdd} />
                     :
-                    
-                    <AgregarCarrito />
+                    <>
+                        <AgregarCarrito />
+                    </>
                 }
             </div>
 
