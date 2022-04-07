@@ -2,10 +2,9 @@
 
 import ItemList from "../ItemList/ItemList"
 
-function ItemListContainer({saludo}){
+function ItemListContainer(){
     return(
       <div>
-          <h1>{saludo}</h1>
           <ItemList />
       </div>  
     )
