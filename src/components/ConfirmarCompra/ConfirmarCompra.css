@@ -1,0 +1,25 @@
+.contenedorCompra{
+    display: block;
+    text-align: center;
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: lightseagreen;
+    border-radius: 5px;
+    color: white;
+
+}
+
+.finalizarCompra{   
+    background-color: lightseagreen;
+    border-radius: 5px;
+    color: white;
+    border:none;
+    padding: 5px;
+    align-items: center;
+    display: block;
+    text-decoration:none;
+    margin: auto;
+}
+
+

@@ -35,5 +35,35 @@
     border-radius: 5px;
     background-color: rgb(19, 120, 187);
     color: white;
+    
+}
+
+.vaciarCarritoContainer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.vaciarCarrito{
+    border-radius: 5px;
+    background-color: rgb(19, 120, 187);
+    color: white;
+    border: none;
+    padding: 3px;  
+}
+
+.confirmarCompra{
+    border-radius: 5px;
+    background-color: rgb(19, 120, 187);
+    color: white;
+    border: none;
+    padding: 3px;
+}
+
+.mensajeError{
+    background-color: lightcoral;
+    border-radius: 3px;
+    margin-top: 15px;
+    padding: 5px;
+    
 }
 

@@ -12,7 +12,6 @@ function ItemList() {
   const { categoriaId } = useParams()
 
 
-  //PARA UNA COLECCION (TODOS LOS ID)
   useEffect(() => {
     if (categoriaId) {
       

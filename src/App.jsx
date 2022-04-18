@@ -6,6 +6,7 @@ import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cart from './components/Cart/Cart';
 import CartContextProvider from '../src/context/CartContext'
+import CartContainer from './components/CartContainer/CartConteiner';
 
 function App() {
 
@@ -20,9 +21,10 @@ function App() {
             <Route path = '/' element={<ItemListContainer/>}/>
             <Route path = '/categoria/:categoriaId' element={<ItemListContainer/>}/>
             <Route path = '/detalle/:Id'element={<ItemDetailContainer/>}/>
-            <Route path = '/cart'element={<Cart />}/>
+            <Route path = '/cart'element={<CartContainer />}/>
             <Route path = '/*'element={<Navigate to='/' replace/>}/>
           </Routes> 
+          
         </div>
 
       </BrowserRouter>

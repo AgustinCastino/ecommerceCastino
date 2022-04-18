@@ -1,17 +1,67 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore"
-import { Link } from "react-router-dom"
 import { useCartContext } from "../../context/CartContext"
 import './Cart.css'
 import tacho from '../../images/tacho.jpeg'
-import FormularioCompra from "../FormularioCompra/FormularioCompra"
-
+import { Form } from "react-bootstrap";
+import { useState } from "react";
+import ConfirmarCompra from "../ConfirmarCompra/ConfirmarCompra"
 
 function Cart() {
     const { calcularPrecioTotal, eliminarItem, cartList, vaciarCart } = useCartContext()
 
+    const [confirmacionCompra, setConfirmacionCompra] = useState(false)
+    const [validacionErronea, setValidacionErronea] = useState(false)
+    const [telefono, setTelefono] = useState()
+    const [mail, setMail] = useState('')
+    const [nombre, setNombre] = useState('')
+
+    const validarMail = (e) => {
+        setMail(e.target.value)
+    }
+
+    const validarTelefono = (e) => {
+        setTelefono(e.target.value)
+    }
+
+
+    const validarNombre = (e) => {
+        setNombre(e.target.value)
+    }
+
+
+    const terminarCompra = () => {
+        if (mail && nombre && telefono) {
+
+            let orden = {}
+
+            orden.buyer = { name: { nombre }, phone: { telefono }, email: { mail } }
+            orden.total = calcularPrecioTotal()
+
+            orden.items = cartList.map(itemOrden => {
+                const id = itemOrden.id
+                const nombre = itemOrden.producto
+                const precio = itemOrden.precio * itemOrden.cantidad
+
+                return { id: id, nombre: nombre, precio: precio }
+            })
+
+            const db = getFirestore()
+            const queryCollection = collection(db, 'ordenes')
+            addDoc(queryCollection, orden)
+                .then(resp => setConfirmacionCompra(resp.id))
+                .catch(err => console.log(err))
+                .finally(() => console.log('terminado'))
+
+            setValidacionErronea(false)
+        } else {
+            setValidacionErronea(true)
+        }
+
+    }
+
     return (
         <>
-            {cartList.length > 0 ?
+            {!confirmacionCompra ?
 
                 <div className="contenedorCarrito">
                     <div>
@@ -33,31 +83,62 @@ function Cart() {
 
                         </div>)}
 
-                        <div>
-                            Precio Total: ${calcularPrecioTotal()}
-                            <button style={{ display: 'block' }} onClick={vaciarCart}>
+                        <div className='vaciarCarritoContainer'>
+                            <button className='vaciarCarrito' style={{ display: 'block' }} onClick={vaciarCart}>
                                 Vaciar Carrito
                             </button>
+                            <b>
+                                Precio Total: ${calcularPrecioTotal()}
+                            </b>
                         </div>
 
                     </div>
 
                     <div style={{ width: '30%', marginTop: '15px' }}>
-                        <FormularioCompra/>
+                        <>
+                            <Form>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control type="email" value={mail} onChange={validarMail} />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Nombre</Form.Label>
+                                    <Form.Control value={nombre} onChange={validarNombre} />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Teléfono</Form.Label>
+                                    <Form.Control type="number" value={telefono} onChange={validarTelefono} />
+                                </Form.Group>
+
+                            </Form>
+
+
+                            <button className='confirmarCompra'onClick={terminarCompra}>
+                                Confirmar Compra
+                            </button>
+
+
+                            {validacionErronea ?
+                                <div className='mensajeError'>
+                                    Por favor, complete todos los datos.
+                                </div>
+
+                                :
+                                <></>
+                            }
+
+
+                        </>
                     </div>
 
                 </div>
 
                 :
 
-                <div className='carritoVacio'>
-                    <h1>Carrito Vacío</h1>
-                    <Link to='/'>
-                        <button>
-                            Ir a Comprar
-                        </button>
-                    </Link>
-                </div>
+                <ConfirmarCompra id={confirmacionCompra} />
+
 
             }
 
