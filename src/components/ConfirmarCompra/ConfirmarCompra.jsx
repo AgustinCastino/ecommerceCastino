@@ -12,9 +12,9 @@ function ConfirmarCompra({ id }) {
                 <h1> Compra realizada con Éxito</h1>
                 <h5> Número de orden: {id}</h5>
             </div>
-            <Link to='/'>
-                <button className='finalizarCompra' onClick={vaciarCart}>
-                    <b>Finalizar compra</b>
+            <Link className='finalizarCompra' to='/'>
+                <button  onClick={vaciarCart}>
+                    <b>Finalizar</b>
                 </button>
             </Link>
         </>

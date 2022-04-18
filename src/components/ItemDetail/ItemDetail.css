@@ -28,3 +28,10 @@
     padding: 3px
 }
 
+.sinStock{
+    background-color: lightsalmon;
+    width: max-content;
+    padding: 5px;
+    border-radius: 3px;
+}
+

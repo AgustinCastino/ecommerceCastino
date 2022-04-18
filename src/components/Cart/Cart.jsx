@@ -1,4 +1,4 @@
-import { addDoc, collection, getFirestore } from "firebase/firestore"
+import { addDoc, collection, getFirestore, doc, updateDoc } from "firebase/firestore"
 import { useCartContext } from "../../context/CartContext"
 import './Cart.css'
 import tacho from '../../images/tacho.jpeg'
@@ -42,15 +42,22 @@ function Cart() {
                 const nombre = itemOrden.producto
                 const precio = itemOrden.precio * itemOrden.cantidad
 
+                const db = getFirestore();
+
+                const orderDoc = doc(db, 'productos', itemOrden.id)
+                updateDoc(orderDoc, {stock: itemOrden.stock - itemOrden.cantidad})
+
+
                 return { id: id, nombre: nombre, precio: precio }
             })
 
-            const db = getFirestore()
+
+            const db = getFirestore();
             const queryCollection = collection(db, 'ordenes')
             addDoc(queryCollection, orden)
-                .then(resp => setConfirmacionCompra(resp.id))
-                .catch(err => console.log(err))
-                .finally(() => console.log('terminado'))
+            .then(resp => setConfirmacionCompra(resp.id))
+            .catch(err => console.log(err))
+            .finally(() => console.log('terminado'))
 
             setValidacionErronea(false)
         } else {
